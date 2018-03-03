@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
 import {List} from 'immutable';
 
-import {getRestaurantsByMeal} from '../models/Data';
+import {getRestaurantsByMeal} from '../models/dish';
 
 const validator = order => !!order.get('restaurant');
 

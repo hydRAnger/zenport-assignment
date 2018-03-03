@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {FormGroup, FormControl, ControlLabel, Alert} from 'react-bootstrap';
 import {List} from 'immutable';
 
-import {availableMeals} from '../models/Data';
+import {availableMeals} from '../models/dish';
 
 const validator = order => order.get('meal') && order.get('people') > 0 && order.get('people') <= 10;
 

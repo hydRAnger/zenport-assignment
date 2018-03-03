@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Grid, Row, Col, FormControl, Button, Glyphicon, Alert} from 'react-bootstrap';
 import {fromJS} from 'immutable';
 
-import {getDishesByMealAndRestaurant} from '../models/Data';
+import {getDishesByMealAndRestaurant} from '../models/dish';
 
 const validator = (order) => {
   const numberOfDishes = order.get('dishes').reduce((sum, dish) => sum += dish.get('num'), 0);

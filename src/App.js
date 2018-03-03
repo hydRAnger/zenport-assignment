@@ -6,7 +6,7 @@ import Step1 from './components/Step1'
 import Step2 from './components/Step2'
 import Step3 from './components/Step3'
 import Review from './components/Review'
-import {availableMeals} from './models/Data';
+import {availableMeals} from './models/dish';
 import './App.css';
 
 const stepInfo = new List([
