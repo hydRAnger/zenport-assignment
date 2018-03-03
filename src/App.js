@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Pagination, Pager} from 'react-bootstrap';
-import styled, {css} from 'react-emotion';
+import {css} from 'react-emotion';
 import {List, fromJS} from 'immutable';
 
 import Step1 from './components/Step1'
@@ -30,6 +30,26 @@ const stepInfo = new List([
 
 const appStyle = css`
   text-align: center;
+  width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+
+  ul.pagination {
+    width: 100%;
+  }
+`;
+
+const stepStyle = css`
+  .min-height: 200px;
+
+  .container-fluid {
+    padding: 0;
+  }
+
+  .alert {
+    padding: 5px 15px;
+    margin: 20px 0;
+  }
 `;
 
 class App extends Component {
@@ -93,11 +113,13 @@ class App extends Component {
               {step.label}
             </Pagination.Item>)}
         </Pagination>
-        <StepCompnent
-          order={order}
-          onUpdate={this.handleOrderUpdate}
-          onValidate={this.handleStepValidate.bind(this, currentStep)}
-          />
+        <div className={stepStyle}>
+          <StepCompnent
+            order={order}
+            onUpdate={this.handleOrderUpdate}
+            onValidate={this.handleStepValidate.bind(this, currentStep)}
+            />
+        </div>
         <Pager>
           {currentStep > 0 &&
             <Pager.Item previous href="#" onSelect={this.handleToPreviousStep}>

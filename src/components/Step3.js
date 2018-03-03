@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Grid, Row, Col, FormControl, Button, Glyphicon, Alert} from 'react-bootstrap';
+import {Grid, Row, Col, FormControl, Button, Glyphicon, Collapse, Alert} from 'react-bootstrap';
+import {css} from 'react-emotion';
 import {fromJS} from 'immutable';
 
 import {getDishesByMealAndRestaurant} from '../models/dish';
@@ -9,6 +10,13 @@ const validator = (order) => {
 
   return numberOfDishes >= order.get('people') && numberOfDishes <= 10;
 }
+
+const gridStyle = css`
+  .row {
+    text-align: left;
+    margin-bottom: 15px;
+  }
+`;
 
 class Step3 extends Component {
   constructor(props, context) {
@@ -176,7 +184,12 @@ class Step3 extends Component {
           </Col>
           <Col md={1}>
             {dishes.size > 1 &&
-              <Button bsStyle="warning" onClick={this.handleRemoveDish.bind(this, dish.get('name'))}>
+              <Button
+                bsStyle="warning"
+                bsSize="small"
+                style={{margin: '4px 0', padding: '1px 4px'}}
+                onClick={this.handleRemoveDish.bind(this, dish.get('name'))}
+                >
                 <Glyphicon glyph="trash" />
               </Button>
             }
@@ -193,7 +206,7 @@ class Step3 extends Component {
     const unorderedDishes = this.state.dishesInMenu.filterNot(d => currentDishes.includes(d));
 
     return (
-      <Grid>
+      <Grid fluid className={gridStyle}>
         <Row>
           <Col md={6}>
             <label>
@@ -208,15 +221,23 @@ class Step3 extends Component {
         </Row>
         {this.renderDishes(unorderedDishes)}
         {dishes.size > 0 && unorderedDishes.size > 0 &&
-          <Button onClick={this.handleAddDish.bind(this, unorderedDishes)}>
-            Add Dish
-          </Button>
+          <Row>
+            <Col md={6}>
+              <Button onClick={this.handleAddDish.bind(this, unorderedDishes)}>
+                <Glyphicon glyph="plus" /> Add Dish
+              </Button>
+            </Col>
+          </Row>
         }
-        {this.state.isValid ||
-          <Alert bsStyle="warning">
-            {`For ${people} people, the total number of dishes (i.e number of dishes * respective serving) should be ${people} - 10`}
-          </Alert>
-        }
+        <Collapse in={!this.state.isValid}>
+          <Row>
+            <Col md={11}>
+              <Alert bsStyle="warning">
+                {`For ${people} people, the total number of dishes (i.e number of dishes * respective serving) should be ${people} - 10`}
+              </Alert>
+            </Col>
+          </Row>
+        </Collapse>
       </Grid>
     );
   }

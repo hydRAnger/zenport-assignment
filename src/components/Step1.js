@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FormGroup, FormControl, ControlLabel, Alert} from 'react-bootstrap';
+import {FormGroup, FormControl, ControlLabel, Collapse, Alert} from 'react-bootstrap';
 import {List} from 'immutable';
 
 import {availableMeals} from '../models/dish';
@@ -88,11 +88,11 @@ class Step1 extends Component {
             value={this.props.order.get('people').toString()}
             onChange={this.handlePeopoleUpdate}
           />
-          {this.state.isValid ||
+          <Collapse in={!this.state.isValid}>
             <Alert bsStyle="warning">
               People shoul be 1-10.
             </Alert>
-          }
+          </Collapse>
         </FormGroup>
       </form>
     );

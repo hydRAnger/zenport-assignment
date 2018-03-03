@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
+import {FormGroup, FormControl, ControlLabel, Collapse, Alert} from 'react-bootstrap';
 import {List} from 'immutable';
 
 import {getRestaurantsByMeal} from '../models/dish';
@@ -84,6 +84,11 @@ class Step2 extends Component {
               </option>
             )}
           </FormControl>
+          <Collapse in={!this.state.isValid}>
+            <Alert bsStyle="warning">
+              Please select a restaurant
+            </Alert>
+          </Collapse>
         </FormGroup>
       </form>
     );
