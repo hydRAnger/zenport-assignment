@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Pagination, Pager} from 'react-bootstrap';
+import styled, {css} from 'react-emotion';
 import {List, fromJS} from 'immutable';
 
 import Step1 from './components/Step1'
@@ -7,7 +8,6 @@ import Step2 from './components/Step2'
 import Step3 from './components/Step3'
 import Review from './components/Review'
 import {availableMeals} from './models/dish';
-import './App.css';
 
 const stepInfo = new List([
   {
@@ -27,6 +27,10 @@ const stepInfo = new List([
     component: Review
   }
 ])
+
+const appStyle = css`
+  text-align: center;
+`;
 
 class App extends Component {
   constructor(props, context) {
@@ -82,7 +86,7 @@ class App extends Component {
     const StepCompnent = stepInfo.get(currentStep).component;
 
     return (
-      <div className="App">
+      <div className={appStyle}>
         <Pagination>
           {stepInfo.map((step, idx) =>
             <Pagination.Item key={idx} active={idx === currentStep}>
