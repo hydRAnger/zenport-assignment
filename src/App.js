@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Pagination, Pager} from 'react-bootstrap';
+import {PageHeader, Pagination, Pager} from 'react-bootstrap';
 import {css} from 'react-emotion';
 import {List, fromJS} from 'immutable';
 
@@ -107,6 +107,9 @@ class App extends Component {
 
     return (
       <div className={appStyle}>
+        <PageHeader>
+          Zenport <small>meals ordering system</small>
+        </PageHeader>
         <Pagination>
           {stepInfo.map((step, idx) =>
             <Pagination.Item key={idx} active={idx === currentStep}>

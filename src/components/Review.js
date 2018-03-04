@@ -4,8 +4,15 @@ import {css} from 'react-emotion';
 
 const gridStyle = css`
   .row {
-    text-align: left;
     margin-bottom: 15px;
+  }
+
+  div.left {
+    text-align: right;
+  }
+
+  div.right {
+    text-align: left;
   }
 `;
 
@@ -18,52 +25,52 @@ class Review extends Component {
     return (
       <Grid fluid className={gridStyle}>
         <Row>
-          <Col md={6}>
+          <Col md={6} className="left">
             <label>
-              Meal
+              Meal:
             </label>
           </Col>
-          <Col md={6}>
+          <Col md={6} className="right">
             <label>
               {this.props.order.get('meal')}
             </label>
           </Col>
         </Row>
         <Row>
-          <Col md={6}>
+          <Col md={6} className="left">
             <label>
-              Number of People
+              Number of People:
             </label>
           </Col>
-          <Col md={6}>
+          <Col md={6} className="right">
             <label>
               {this.props.order.get('people')}
             </label>
           </Col>
         </Row>
         <Row>
-          <Col md={6}>
+          <Col md={6} className="left">
             <label>
-              Restaurant
+              Restaurant:
             </label>
           </Col>
-          <Col md={6}>
+          <Col md={6} className="right">
             <label>
               {this.props.order.get('restaurant')}
             </label>
           </Col>
         </Row>
         <Row>
-          <Col md={6}>
+          <Col md={6} className="left">
             <label>
-              Dishes
+              Dishes:
             </label>
           </Col>
-          <Col md={6}>
+          <Col md={6} className="right">
             {this.props.order.get('dishes').map((dish, idx) =>
               <p key={idx}>
                 <label>
-                  {`${dish.get('name')} - ${dish.get('num')}`}
+                  {`+ ${dish.get('name')} - ${dish.get('num')}`}
                 </label>
               </p>
             )}
