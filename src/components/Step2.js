@@ -21,6 +21,7 @@ class Step2 extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
+      // Akira: Cause this is a React test and has no async need, I'm not involve Redux for now.
       restaurants: getRestaurantsByMeal(nextProps.order.get('meal')),
       isValid: validator(nextProps.order)
     });

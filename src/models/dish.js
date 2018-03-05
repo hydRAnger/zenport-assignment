@@ -1,5 +1,7 @@
 import {fromJS, List} from 'immutable';
 
+// Akira: Cause this is a React test and has no async need, I'm not involve Redux for now.
+// Akira: This models object takes role of Action+Reducer in Redex.
 const dishInfo = fromJS([
   {
     'id': 1,

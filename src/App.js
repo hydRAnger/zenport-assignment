@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+// Akira: I use Bootstrap as the component library this time, but Material-UI or ant-design are also alternative.
 import {PageHeader, Pagination, Pager} from 'react-bootstrap';
 import {css} from 'react-emotion';
 import {List, fromJS} from 'immutable';
@@ -9,6 +10,7 @@ import Step3 from './components/Step3'
 import Review from './components/Review'
 import {availableMeals} from './models/dish';
 
+// Akira: I prefer use Immutable.js to make data model more intuitive.
 const stepInfo = new List([
   {
     label: 'Step1',
@@ -28,6 +30,7 @@ const stepInfo = new List([
   }
 ])
 
+// Akira: I've never used emotion before, Looking forward to your suggestions.
 const appStyle = css`
   text-align: center;
   width: 800px;
@@ -98,7 +101,8 @@ class App extends Component {
 
   handleSubmit() {
     console.info('Order Info: ');
-    console.dir(this.state.order.toJS())
+    console.dir(this.state.order.toJS());
+    console.info('Maybe we will get opportunity for meeting in Tokyo.  --Akira');
   }
 
   render() {

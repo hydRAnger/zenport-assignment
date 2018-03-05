@@ -23,6 +23,7 @@ class Step3 extends Component {
     super(props, context);
 
     this.state = {
+      // Akira: Cause this is a React test and has no async need, I'm not involve Redux for now.
       dishesInMenu: getDishesByMealAndRestaurant(props.order.get('meal'), props.order.get('restaurant')),
       isValid: validator(props.order)
     }
@@ -112,7 +113,6 @@ class Step3 extends Component {
     event.preventDefault();
     this.props.onUpdate && this.props.onUpdate(newOrder);
   }
-
 
   renderDishes(unorderedDishes) {
     const dishes = this.props.order.get('dishes');
