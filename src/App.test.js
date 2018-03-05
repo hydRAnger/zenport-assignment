@@ -4,7 +4,6 @@ import {mount} from 'enzyme';
 import {fromJS} from 'immutable';
 
 import App from './App';
-import {availableMeals} from './models/dish';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
